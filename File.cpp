@@ -7,7 +7,7 @@
 std::string File::ReadString() {
     // Throw exception if the file has already ended.
     if (eof()) {
-        throw std::runtime_error("Error! Attempting to read data after the end of the file!\n "
+        throw std::runtime_error("Error: Attempting to read data after the end of the file!\n "
                                  "Perhaps the program does not correctly define the file limits ! [File::ReadString]");
     }
     std::string temp;
@@ -16,7 +16,7 @@ std::string File::ReadString() {
         std::getline(*file.operator->(), temp);
     }
     catch (const std::exception& exception) {
-        std::string str = "File read error! [File::ReadString]. Exception code: ";
+        std::string str = "Error: while file read! [File::ReadString]. Exception code: ";
         str += exception.what();
         throw std::runtime_error(str);
     }
@@ -24,5 +24,12 @@ std::string File::ReadString() {
 }
 
 void File::WriteString(const std::string &string) {
-    *file.operator->() << string << std::endl;
+    try {
+        *file.operator->() << string << std::endl;
+    }
+    catch (const std::exception& exception){
+        std::string str = "Error: while write read! [File::WriteString]. Exception code: ";
+        str += exception.what();
+        throw std::runtime_error(str);
+    }
 }
