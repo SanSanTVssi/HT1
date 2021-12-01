@@ -35,14 +35,13 @@ public:
     /**
      * @return pointer for work with file stream
      */
-    [[maybe_unused]] std::fstream *getFile() { return file.get(); }
+    [[maybe_unused]] std::fstream *operator->() { return file.operator->(); }
 
     /**
      * Checks end of file
      * @return true if the end of file
      */
-    bool eof() { return file.get()->eof(); }
-
+    bool eof() { return file->eof(); }
 };
 
 

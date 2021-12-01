@@ -13,7 +13,7 @@ std::string File::ReadString() {
     std::string temp;
     // Throw exception if the file is empty or size of sting bigger than maximum number of elements the string is able to hold.
     try {
-        std::getline(*file.get(), temp);
+        std::getline(*file.operator->(), temp);
     }
     catch (const std::exception& exception) {
         std::string str = "File read error! [File::ReadString]. Exception code: ";
@@ -24,5 +24,5 @@ std::string File::ReadString() {
 }
 
 void File::WriteString(const std::string &string) {
-    *file.get() << string << std::endl;
+    *file.operator->() << string << std::endl;
 }

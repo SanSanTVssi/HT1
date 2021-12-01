@@ -18,7 +18,7 @@ public:
 
     ~FileGuard();
 
-    std::fstream *get() { return file; }
+    std::fstream *operator->() { return file; }
 };
 
 #endif //HT1_FILEGUARD_H

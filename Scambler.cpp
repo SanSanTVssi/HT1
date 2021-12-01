@@ -8,7 +8,7 @@
 Scrambler::Scrambler(const std::string &filename,
                      std::string encryption_key) : file(new File(filename)),
                                                    Encryption_key(std::move(encryption_key)) {}
-                                                   
+
 std::string Scrambler::encrypt(const std::string &string) const {
     std::string result = std::string();
     for (int k = 0; k < string.length(); ++k) {

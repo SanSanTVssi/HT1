@@ -12,6 +12,7 @@ void Demonstration(IFileIO *source, IFileIO *donor) {
 
 int main() {
     using namespace std;
+    std::wstring wstring1str = L"dljsfldfjas";
     try {
         auto instance_source = Scrambler("source.html", "abcs");
         auto instance_donor = Scrambler("donor.txt", "abcs");
